@@ -34,7 +34,7 @@ foreach ($results as $row){
 	echo "<hr>";
 }
 ?>
-	<form method="POST" action = "mission_7-1_yoyaku.php">
+	<form method="POST" action = "mission_7-1_kakunin.php">
 <br>
 <center><input type="text" name="number" value="" placeholder="予約番号(1つのみ)">	
 <input type="submit" name="yoyaku" value="予約する"><br><br>
