@@ -9,6 +9,10 @@
 	<form method="POST" action = "mission_7-1_kakunin.php">
 	<table border="1">
 	<tr>
+		<th bgcolor=b0c4de>予約番号</th>
+		<th><input type="text" name="registernum" value="<?php echo $_POST['number']; ?>">
+	</tr>
+	<tr>
 		<th bgcolor=b0c4de>ご選択日時</th>
 		<th><input type="text" name="date" value="" placeholder="日時">
 	</tr>
