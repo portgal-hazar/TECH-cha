@@ -43,4 +43,26 @@
 	</form>
 </body>
 </html>
+<?php 
+$dsn = 'mysql:dbname=データベース名;host=localhost';
+$user = 'ユーザー名';
+$password = 'パスワード';
+$pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 
+//sessionでログイン情報獲得？
+//値を返して上のフォームに表示
+$?= $_SESSION[""];
+$sql = "SELECT*FROM テーブル名 WHERE ?=:?"; //←かようさんが作っているログインのテーブル名とカラムと合わせる
+	$stmt=$pdo->prepare($sql);
+	$stmt->bindParam(":?", $?, PDO::PARAM_STR);
+	$results=$stmt->fetchall();
+foreach($results as $row){
+	$name=$row[""];
+	$mail=$row[""];
+}
+
+if(empty($_POST["yoyaku"])){
+	echo "空欄を埋めてください!!";
+}else{
+}
+?>
