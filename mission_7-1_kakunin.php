@@ -18,7 +18,7 @@
 	</tr>
 	<tr>
 		<th bgcolor=b0c4de>お名前</th>
-		<th><input type="text" name="name" value="" placeholder="お名前">
+		<th><input type="text" name="name" value="<?php echo $name; ?>" placeholder="お名前">
 	</tr>
 	<tr>
 		<th bgcolor=b0c4de>電話番号(半角)</th>
@@ -26,7 +26,7 @@
 	</tr>
 	<tr>
 		<th bgcolor=b0c4de>メールアドレス(半角)</th>
-		<th><input type="text" name="mail" value="" placeholder="メールアドレス">
+		<th><input type="text" name="mail" value="<?php echo $mail; ?>" placeholder="メールアドレス">
 	</tr>
 	<tr>
 		<th bgcolor=b0c4de>性別</th>
@@ -44,6 +44,8 @@
 </body>
 </html>
 <?php 
+$name="";
+$mail="";
 $dsn = 'mysql:dbname=データベース名;host=localhost';
 $user = 'ユーザー名';
 $password = 'パスワード';
