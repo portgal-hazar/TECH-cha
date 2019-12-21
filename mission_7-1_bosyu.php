@@ -75,20 +75,39 @@ $stmt = $pdo->query($sql);
 $results = $stmt->fetchAll();
 echo "<strong>募集しました。</strong><br><br>";
 echo "<hr>";
+?>
 
+<table  border="1">
+<tr>
+<th scope="col">予約番号</th>
+<th scope="col">募集者・団体名</th>
+<th scope="col">場所</th>
+<th scope="col">日時</th>
+<th scope="col">アクセス</th>
+<th scope="col">申し込み期限</th>
+<th scope="col">その他</th>
+</tr>		
+		
+<?php		
 foreach ($results as $row){
-	echo $row['id'].' | ';
-	echo $row['name'].' | ';
-	echo $row['naiyo'].' | ';
-	echo $row['place'].' | ';
-	echo $row['daytime'].' | ';
-	echo $row['access'].' | ';
-	echo $row['kigen'].' | ';
-	echo $row['other'].'<br>';
-	echo "<hr>";
+?>
+	
+<tr>
+<td><?php echo $row['id']; ?> </td>
+<td><?php echo $row['name'] ; ?> </td>
+<td><?php echo $row['naiyo'] ; ?> </td>
+<td><?php echo $row['place'] ; ?> </td>
+<td><?php echo $row['daytime'] ; ?> </td>
+<td><?php echo $row['kigen'] ; ?> </td>
+<td><?php echo $row['other'] ; ?> </td>
+</tr>
+
+<?php
 }
-
-
+?>
+</table>
+		
+<?php
 }else{
 echo "すべて埋めてください。";
 }
