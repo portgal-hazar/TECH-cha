@@ -7,8 +7,7 @@
 	<body>
 	<center><h1>＜復興ボランティア一覧＞</h1>
 	<hr>
-<strong><p>予約番号  |  募集者・団体名  |  場所  |  日時  |  アクセス  |  申し込み期限  |  その他  | </p></strong></center>
-<hr>
+
 	<?php
 $dsn = 'mysql:dbname=データベース名;host=localhost';
 $user = 'ユーザー名';
@@ -18,22 +17,37 @@ $pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_W
 $sql = 'SELECT * FROM bosyu_test2';
 $stmt = $pdo->query($sql);
 $results = $stmt->fetchAll();
+?>
 
+<table  border="1">
+<tr>
+<th scope="col">予約番号</th>
+<th scope="col">募集者・団体名</th>
+<th scope="col">場所</th>
+<th scope="col">日時</th>
+<th scope="col">アクセス</th>
+<th scope="col">申し込み期限</th>
+<th scope="col">その他</th>
+</tr>
+
+<?php		
 foreach ($results as $row){
+?>
+	
+<tr>
+<td><?php echo $row['id']; ?> </td>
+<td><?php echo $row['name'] ; ?> </td>
+<td><?php echo $row['naiyo'] ; ?> </td>
+<td><?php echo $row['place'] ; ?> </td>
+<td><?php echo $row['daytime'] ; ?> </td>
+<td><?php echo $row['kigen'] ; ?> </td>
+<td><?php echo $row['other'] ; ?> </td>
+</tr>
 
-//	echo '<input type="checkbox" name="check" value="">';
-	echo $row['id'].' | ';
-	echo $row['name'].' | ';
-	echo $row['naiyo'].' | ';
-	echo $row['place'].' | ';
-	echo $row['daytime'].' | ';
-	echo $row['access'].' | ';
-	echo $row['kigen'].' | ';
-	echo $row['other'].' | ';
-//	echo '<input type="submit" name="yoyaku" value="予約"><br>';
-	echo "<hr>";
+<?php
 }
 ?>
+</table>
 	<form method="POST" action = "mission_7-1_kakunin.php">
 <br>
 <center><input type="text" name="number" value="" placeholder="予約番号(1つのみ)">	
