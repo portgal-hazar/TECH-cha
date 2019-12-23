@@ -44,23 +44,26 @@
 </body>
 </html>
 <?php 
+
+session_start();
+
 $name="";
 $mail="";
+
 $dsn = 'mysql:dbname=データベース名;host=localhost';
 $user = 'ユーザー名';
 $password = 'パスワード';
 $pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 
-//sessionでログイン情報獲得？
-//値を返して上のフォームに表示
-$?= $_SESSION[""];
-$sql = "SELECT*FROM テーブル名 WHERE ?=:?"; //←かようさんが作っているログインのテーブル名とカラムと合わせる
+//sessionでログイン情報獲得
+$userid = $_SESSION["nicname"];
+$sql = "SELECT*FROM defreg2 WHERE nicname=:nicname"; 
 	$stmt=$pdo->prepare($sql);
-	$stmt->bindParam(":?", $?, PDO::PARAM_STR);
+	$stmt->bindParam(":nicname", $userid, PDO::PARAM_STR);
 	$results=$stmt->fetchall();
 foreach($results as $row){
-	$name=$row[""];
-	$email=$row[""];
+	$name=$row["nicname"];
+	$email=$row["newmail"];
 }
 
 if(empty($_POST["yoyaku"])){
@@ -73,8 +76,8 @@ if(empty($_POST["yoyaku"])){
 		$send->bindParam(":id", $id, PDO::PARAM_INT);
 		$newmail=$send->fetchall();
 	foreach($newmail as $host){
-		$host_name=$host[""];
-		$host_mail=$host[""];
+		$host_name=$host["nicname"];
+		$host_mail=$host["newmail"];
 	}
 		
 require 'src/Exception.php';
@@ -100,7 +103,7 @@ require 'setting.php';
     $mail->addAddress("$host_mail","$host_mail");
     $mail->Subject = MAIL_SUBJECT; 
     $mail->isHTML(true);    
-    $body = "以下の内容で予";
+    $body = "以下の内容で予約しました！確認してください。"."<br>" $_POST["registernumber"]." ". $_POST["name"]." ". $_POST["date"]." ". $_POST["phone_number"].;
 
     $mail->Body  = $body; // メール本文
     // メール送信の実行
