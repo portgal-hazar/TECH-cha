@@ -128,9 +128,9 @@ if(empty($_POST["phone_number"])){
 $name=" ";
 $mail=" ";
 
-$dsn = 'mysql:dbname=tb210621db;host=localhost';
-$user = 'tb-210621';
-$password = '32FyTj7yt7';
+$dsn = 'mysql:dbname=データベース名;host=localhost';
+$user = 'ユーザー名';
+$password = 'パスワード';
 $pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 
 //sessionでログイン情報獲得
